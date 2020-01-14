@@ -13,7 +13,7 @@ const mongoUri = config.get("mongoUri");
 const updateBd = require("./utilites/updateBd");
 const upComing = require("./models/Films");
 
-const lists = []
+const lists = [];
 
 async function connectMongo() {
   try {
@@ -31,11 +31,3 @@ async function connectMongo() {
 connectMongo();
 
 //  updateBd(request, apiUrl, "top_rated", apiKey, 1, upComing, []);
-
-// sendRequest()
-// const res = updateBd(request, apiUrl, "top_rated", apiKey, 1);
-
-
-// request.get(`https://api.themoviedb.org/3/movie/157336?api_key=${apiKey}`, (err, res, body) => {
-//     console.log(body)
-// });
