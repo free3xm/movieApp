@@ -1,4 +1,4 @@
-module.exports = function updateBd(req, url, list, apiKey, page, Model, data) {
+module.exports = function updateBd(req, url, list, apiKey, page = 1, Model, data) {
   req.get(
     `${url}${list}?api_key=${apiKey}&page=${page}`,
     async (err, res, body) => {

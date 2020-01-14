@@ -11,7 +11,7 @@ const apiUrl = config.get("apiUrl");
 const mongoUri = config.get("mongoUri");
 
 const updateBd = require("./utilites/updateBd");
-const ListModel = require("./models/Films");
+const ListModel = require("./models/FilmsList");
 
 const lists = ["now_playing", "popular", "top_rated", "upcoming"];
 
@@ -34,5 +34,4 @@ async function getData() {
   console.log(res.list[0].results);
 }
 getData();
-// lists.forEach(elem => updateBd(request, apiUrl, elem, apiKey, 1, ListModel, []))
-//  updateBd(request, apiUrl, "top_rated", apiKey, 1, upComing, []);
+// lists.forEach(elem => updateBd(request, apiUrl, elem, apiKey, 1, ListModel))
