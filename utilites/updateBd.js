@@ -9,7 +9,11 @@ module.exports = function updateBd(req, url, list, apiKey, page, Model, data) {
         page += 1;
         return updateBd(req, url, list, apiKey, page, Model, data);
       }
-      const films = new Model({ upComing: data });
+      console.log(data, list);
+      const films = new Model({
+        listName: list,
+        list: data
+      });
       await films.save();
     }
   );

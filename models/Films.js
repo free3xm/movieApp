@@ -1,7 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const schema = new Schema({
-  upComing: {type: Array}
+  listName: { type: String },
+  list: {type : Object}
+
 });
 
-module.exports = model("upComing", schema);
+module.exports = model("List", schema);
