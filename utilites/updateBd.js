@@ -1,20 +1,30 @@
-module.exports = function updateBd(req, url, list, apiKey, page = 1, Model, data) {
-  req.get(
-    `${url}${list}?api_key=${apiKey}&page=${page}`,
-    async (err, res, body) => {
-      if (err) return console.log(err);
-      body = JSON.parse(body);
-      data.push(body);
-      if (body.total_pages && body.total_pages > page) {
-        page += 1;
-        return updateBd(req, url, list, apiKey, page, Model, data);
-      }
-      console.log(data, list);
-      const films = new Model({
-        listName: list,
-        list: data
-      });
-      await films.save();
+const fetch = require("node-fetch");
+
+module.exports = async function updateBd(
+  url,
+  listName,
+  apiKey,
+  page,
+  Model,
+  dataDB
+) {
+  try {
+    const res = await fetch(`${url}${listName}?api_key=${apiKey}&page=${page}`);
+    const data = await res.json();
+
+    dataDB.push(data);
+
+    if (data.total_pages && data.total_pages > page) {
+      page += 1;
+      return updateBd(url, listName, apiKey, page, Model, dataDB);
     }
-  );
+    console.log(dataDB);
+    const films = new Model({
+      listName,
+      list: dataDB
+    });
+    await films.save();
+  } catch (e) {
+    console.log(e);
+  }
 };

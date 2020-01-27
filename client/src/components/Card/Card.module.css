@@ -1,0 +1,28 @@
+.Card {
+  width: 135px;
+  height: auto;
+  box-shadow: 2px 2px 5px #aaa;
+  text-align: center;
+  overflow: hidden;
+}
+.Card > h3 {
+  font-weight: 600;
+  font-size: 20px;
+  padding: 5px 0;
+}
+.Card > p {
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.Card_noImage_holder {
+  width: 135px;
+  height: 175px;
+  display: flex;
+  background: #dbdbdb;
+  justify-content: center;
+  align-items: center;
+}
+.Card_noImage_holder > i {
+  font-size: 50px;
+  color: #b5b5b5;
+}

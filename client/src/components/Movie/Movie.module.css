@@ -1,0 +1,53 @@
+.Movie_wrapper {
+  background: #0288d1;
+  cursor: pointer;
+}
+.Movie,
+.Movie_MoviePage {
+  box-sizing: border-box;
+  position: relative;
+  height: 550px;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.5s;
+  overflow: hidden;
+  cursor: pointer;
+}
+.Movie {
+  background-size: 100%;
+}
+.Movie_MoviePage {
+  background-size: cover;
+}
+.Movie_info {
+  color: #fff;
+  padding-top: 10px;
+}
+.Movie_info > h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+}
+.Info_descr {
+  padding: 0 5px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Movie_genres{
+  margin-bottom: 5px;
+  background: rgba(224, 210, 210, 0.3);
+  text-align: center;
+  padding: 7px 0;
+}
+.Movie:hover {
+  background-size: 110%;
+}
