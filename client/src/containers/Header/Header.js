@@ -36,21 +36,14 @@ function Header(props) {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   };
-  console.log(props);
   return (
     <header className={cls.Header}>
       <Slider {...settings}>
-        {props.loading ? (
-            [0,0,0,0,0].map(()=> <Loader key={Math.random()}/>)
-        ) : (
-          props.movies.results.map((movie, i) => (
-            <Movie
-              key={i + movie.title}
-              movie={movie}
-              header={true}
-            />
-          ))
-        )}
+        {props.loading
+          ? [0, 0, 0, 0, 0].map(() => <Loader key={Math.random()} />)
+          : props.movies[0].map((movie, i) => (
+              <Movie key={i + movie.title} movie={movie} header={true} />
+            ))}
       </Slider>
     </header>
   );

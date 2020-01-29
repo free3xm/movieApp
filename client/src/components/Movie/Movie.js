@@ -3,6 +3,7 @@ import cls from "./Movie.module.css";
 import { Colors } from "../UI/Colors/Colors";
 import { Genres } from "./Genres/Genres";
 import { withRouter } from "react-router-dom";
+import Placeholder from "../UI/Placeholder/Placeholder";
 
 function Movie(props) {
   const MovieStyles = {
@@ -26,7 +27,11 @@ function Movie(props) {
       onClick={() => openMovieHandler(props)}
       style={randomBg}
     >
-      <div className={cls.Movie_MoviePage} style={MovieStyles}></div>
+      {props.movie.poster_path ? (
+        <div className={cls.Movie_MoviePage} style={MovieStyles}></div>
+      ) : (
+        <Placeholder width={364} height={550} />
+      )}
       <div className={cls.Movie_info}>
         <h2>{props.movie.title}</h2>
         <p className={cls.Info_descr}>{props.movie.overview}</p>

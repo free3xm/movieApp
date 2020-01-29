@@ -1,7 +1,9 @@
-.Header{
-    height: auto;
-    width: 100%;
+.Header {
+  height: auto;
+  width: 100%;
 }
-.PrevArrow::before, .NextArrow::before{
-    font-size: 40px;
+.PrevArrow::before,
+.NextArrow::before {
+  font-size: 40px;
 }
+

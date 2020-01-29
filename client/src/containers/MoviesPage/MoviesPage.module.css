@@ -1,12 +1,12 @@
 .MoviesPage {
   padding-top: 50px;
+  min-height: 70vh;
   width: 80vw;
   min-width: 700px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 100px;
 }
 .MoviesPage > h2 {
   text-align: center;
@@ -48,4 +48,10 @@
 }
 .Movies > div {
   width: calc(25% - 20px);
+}
+.ButtonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 40px;
 }

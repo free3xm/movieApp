@@ -1,23 +1,34 @@
 import { FETCH_LIST_START, FETCH_LIST_SUCCESS } from "../actions/actionTypes";
 
 const initialState = {
-  list: [],
+  lists: {
+    now_playing: [],
+    upcoming: [],
+    popular: [],
+    top_rated: []
+  },
   loading: true
 };
 
 export default function getLists(state = initialState, action) {
   switch (action.type) {
     case FETCH_LIST_START: {
+      console.log(action.listName, state);
       return {
         ...state,
-        loading: true
+        loading: state.lists[action.listName].length ? false : true
       };
     }
     case FETCH_LIST_SUCCESS: {
-      console.log(action);
       return {
         ...state,
-        list: action.list,
+        lists: {
+          ...state.lists,
+          [action.listName]: [
+            ...state.lists[action.listName],
+            ...action.list[action.listName]
+          ]
+        },
         loading: false
       };
     }

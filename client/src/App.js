@@ -1,32 +1,57 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-
 import Layout from "./hoc/Layout/Layout";
 import Header from "./containers/Header/Header";
 import MoviesPage from "./containers/MoviesPage/MoviesPage";
 import Footer from "./containers/Footer/Footer";
 import MainMovie from "./components/MainMovie/MainMovie";
 import { fetchLists } from "./store/actions/fetchLists";
+import NavBar from "./components/NavBar/NavBar";
+import Button from "./components/UI/Button/Button";
 
 class App extends React.Component {
+  state = {
+    page: 1,
+    list: "now_playing"
+  };
   componentDidMount() {
-    this.props.fetchLists();
+    this.props.fetchLists(this.state.list);
   }
+  LoadMoreHandler = () => {
+    this.props.fetchLists(this.state.list, this.state.page);
+    this.setState(() => ({
+      page: this.state.page + 1
+    }));
+    console.log(this.state);
+  };
+  changeListHandler = list => {
+    this.setState(() => ({
+      page: 0,
+      list
+    }));
+    this.props.fetchLists(list);
+  };
   render() {
     console.log(this.props);
     return (
-      <div className="App">
+      <>
         <Layout>
-          <Header movies={this.props.list} loading={this.props.loading} />
+          <NavBar />
+          <Header
+            movies={this.props.list.now_playing}
+            loading={this.props.loading}
+          />
           <Switch>
             <Route
               path="/"
               exact
               render={() => (
                 <MoviesPage
-                  movies={this.props.list}
+                  movies={this.props.list[this.state.list]}
                   loading={this.props.loading}
+                  clickHandler={this.LoadMoreHandler}
+                  changeList={this.changeListHandler}
                 />
               )}
             />
@@ -34,19 +59,20 @@ class App extends React.Component {
           </Switch>
           <Footer />
         </Layout>
-      </div>
+      </>
     );
   }
 }
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    list: state.lists.list,
+    list: state.lists.lists,
     loading: state.lists.loading
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    fetchLists: () => dispatch(fetchLists())
+    fetchLists: (list, page) => dispatch(fetchLists(list, page))
   };
 }
 

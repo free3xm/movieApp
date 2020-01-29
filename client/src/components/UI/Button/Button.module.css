@@ -1,0 +1,23 @@
+.Button {
+  box-sizing: border-box;
+  margin-top: 30px;
+  width: 120px;
+  height: 40px;
+  background: #fff;
+  color: #777;
+  text-align: center;
+  border: none;
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 2px 2px 3px #999;
+  transition: 0.3s ease-in;
+  border-radius: 5px;
+  user-select: none;
+}
+.Button:hover {
+  color: #000;
+}
+.Button:active {
+  transform: scale(0.95);
+}

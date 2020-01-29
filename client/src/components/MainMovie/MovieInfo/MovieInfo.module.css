@@ -1,0 +1,53 @@
+.MovieInfo {
+  margin-left: 40px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.MovieInfo > p {
+  padding: 15px;
+  font-size: 20px;
+  box-shadow: 2px 2px 4px #999;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.MovieInfo_rating {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+.grouping {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.ProductionCaption {
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+.Company {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  box-shadow: 2px 2px 4px #999;
+  width: 150px;
+  height: 80px;
+  padding: 5px;
+  text-align: center;
+}
+.Country {
+  box-shadow: 2px 2px 4px #999;
+  padding: 15px;
+  border-radius: 5px;
+  flex-grow: 1;
+  text-align: center;
+}

@@ -3,10 +3,12 @@ const router = Router();
 const MoviesLists = require("../models/MoviesLists");
 const Movie = require("../models/Movie");
 
-router.get("/lists/now_playing", async (req, res) => {
+router.get("/lists/:list/:page", async (req, res) => {
   try {
-    let data = await MoviesLists.findOne({ listName: "now_playing" });
-    res.json(data.list[0]);
+    console.log(req.params);
+    let data = await MoviesLists.findOne({ listName: req.params.list });
+    console.log(data);
+    res.json({ [req.params.list]: [data.list[req.params.page].results] });
   } catch (e) {
     console.log(e);
   }

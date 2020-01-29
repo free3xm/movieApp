@@ -1,0 +1,18 @@
+.NavBar {
+  width: 90vw;
+  background: #fff;
+  box-shadow: 2px 2px 4px #888;
+  padding: 17px 20px;
+  margin: 10px auto;
+  border-radius: 5px;
+  position: sticky;
+  top: 5px;
+  z-index: 99;
+  text-align: end;
+}
+.NavBar > a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  margin-right: 10px;
+}

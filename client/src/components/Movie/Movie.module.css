@@ -42,11 +42,13 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.Movie_genres{
+.Movie_genres {
   margin-bottom: 5px;
   background: rgba(224, 210, 210, 0.3);
   text-align: center;
-  padding: 7px 0;
+  line-height: 30px;
+  padding: 0 5px;
+  height: 30px;
 }
 .Movie:hover {
   background-size: 110%;
