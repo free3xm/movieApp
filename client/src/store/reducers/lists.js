@@ -7,7 +7,8 @@ const initialState = {
     popular: [],
     top_rated: []
   },
-  loading: true
+  loading: true,
+  headerLoading: true
 };
 
 export default function getLists(state = initialState, action) {
@@ -16,7 +17,8 @@ export default function getLists(state = initialState, action) {
       console.log(action.listName, state);
       return {
         ...state,
-        loading: state.lists[action.listName].length ? false : true
+        loading: state.lists[action.listName].length ? false : true,
+        headerLoading: state.lists.now_playing.length ? false : true
       };
     }
     case FETCH_LIST_SUCCESS: {
@@ -29,7 +31,8 @@ export default function getLists(state = initialState, action) {
             ...action.list[action.listName]
           ]
         },
-        loading: false
+        loading: false,
+        headerLoading: false
       };
     }
     default:

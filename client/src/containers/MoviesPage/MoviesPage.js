@@ -19,7 +19,13 @@ function MoviesPage(props) {
         </h2>
         <ul className={cls.MoviesFilter}>
           {lists.map(e => (
-            <li key={e[0]} onClick={() => props.changeList(e[1])}>
+            <li
+              key={e[0]}
+              className={
+                props.activeList === e[1] ? cls.filterActive : cls.filter
+              }
+              onClick={() => props.changeList(e[1])}
+            >
               {e[0]}
             </li>
           ))}

@@ -1,0 +1,11 @@
+.User {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  padding: 10px 5px;
+  width: 150px;
+  height: 200px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px 1px #ccc;
+}

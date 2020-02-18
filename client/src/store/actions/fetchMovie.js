@@ -5,7 +5,7 @@ export function fetchMovie(id) {
   return async dispatch => {
     dispatch(fetchMovieStart());
     try {
-      const res = await axios.get(`/api/get_movie/${id}`);
+      const res = await axios.get(`/api/movies/get_movie/${id}`);
       const data = res.data;
       dispatch(fetchMovieSuccess(data));
     } catch (e) {

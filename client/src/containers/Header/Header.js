@@ -36,6 +36,7 @@ function Header(props) {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />
   };
+  
   return (
     <header className={cls.Header}>
       <Slider {...settings}>

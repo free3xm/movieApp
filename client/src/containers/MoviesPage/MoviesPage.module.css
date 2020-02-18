@@ -28,17 +28,24 @@
   display: flex;
   margin: 10px;
 }
-.MoviesFilter > li {
+.filterActive,
+.filter {
   height: 30px;
   font-size: 16px;
-  margin-right: 10px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.MoviesFilter li:hover {
+.filter:hover {
   color: #999;
   font-size: 16.5px;
 }
+.filterActive {
+  font-size: 17px;
+  font-weight: 900;
+  cursor: default;
+}
+
 .Movies {
   justify-content: center;
   display: flex;

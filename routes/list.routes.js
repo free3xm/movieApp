@@ -7,7 +7,6 @@ router.get("/lists/:list/:page", async (req, res) => {
   try {
     console.log(req.params);
     let data = await MoviesLists.findOne({ listName: req.params.list });
-    console.log(data);
     res.json({ [req.params.list]: [data.list[req.params.page].results] });
   } catch (e) {
     console.log(e);

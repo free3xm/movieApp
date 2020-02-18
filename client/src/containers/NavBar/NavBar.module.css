@@ -11,8 +11,19 @@
   text-align: end;
 }
 .NavBar > a {
+  text-align: center;
+  display: inline-block;
+  width: 80px;
+  font-size: 18px;
   text-decoration: none;
   color: #000;
   font-weight: 600;
   margin-right: 10px;
+}
+.User {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+  font-size: 25px;
 }

@@ -5,10 +5,11 @@ import Layout from "./hoc/Layout/Layout";
 import Header from "./containers/Header/Header";
 import MoviesPage from "./containers/MoviesPage/MoviesPage";
 import Footer from "./containers/Footer/Footer";
-import MainMovie from "./components/MainMovie/MainMovie";
+import MainMovie from "./containers/MainMovie/MainMovie";
 import { fetchLists } from "./store/actions/fetchLists";
-import NavBar from "./components/NavBar/NavBar";
-import Button from "./components/UI/Button/Button";
+import NavBar from "./containers/NavBar/NavBar";
+import Auth from "./containers/Auth/Auth";
+import { autoLogin } from "./store/actions/auth";
 
 class App extends React.Component {
   state = {
@@ -17,30 +18,33 @@ class App extends React.Component {
   };
   componentDidMount() {
     this.props.fetchLists(this.state.list);
+    this.props.autoLogin();
   }
+
   LoadMoreHandler = () => {
     this.props.fetchLists(this.state.list, this.state.page);
     this.setState(() => ({
       page: this.state.page + 1
     }));
-    console.log(this.state);
   };
+
   changeListHandler = list => {
+    if (list === this.state.list) return;
     this.setState(() => ({
-      page: 0,
+      page: 1,
       list
     }));
     this.props.fetchLists(list);
   };
+
   render() {
-    console.log(this.props);
     return (
       <>
         <Layout>
           <NavBar />
           <Header
             movies={this.props.list.now_playing}
-            loading={this.props.loading}
+            loading={this.props.headerLoading}
           />
           <Switch>
             <Route
@@ -48,6 +52,7 @@ class App extends React.Component {
               exact
               render={() => (
                 <MoviesPage
+                  activeList={this.state.list}
                   movies={this.props.list[this.state.list]}
                   loading={this.props.loading}
                   clickHandler={this.LoadMoreHandler}
@@ -55,6 +60,7 @@ class App extends React.Component {
                 />
               )}
             />
+            <Route path="/auth" exact component={Auth} />
             <Route path="/movie/:id" component={MainMovie} />
           </Switch>
           <Footer />
@@ -64,15 +70,16 @@ class App extends React.Component {
   }
 }
 function mapStateToProps(state) {
-  console.log(state);
   return {
     list: state.lists.lists,
-    loading: state.lists.loading
+    loading: state.lists.loading,
+    headerLoading: state.lists.headerLoading
   };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    fetchLists: (list, page) => dispatch(fetchLists(list, page))
+    fetchLists: (list, page) => dispatch(fetchLists(list, page)),
+    autoLogin: () => dispatch(autoLogin())
   };
 }
 

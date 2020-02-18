@@ -3,25 +3,39 @@ import cls from "./MainMovie.module.css";
 import { withRouter } from "react-router-dom";
 import { fetchMovie } from "../../store/actions/fetchMovie";
 import { connect } from "react-redux";
-import Loader from "../UI/Loader/Loader";
-import Card from "../Card/Card";
-import Button from "../UI/Button/Button";
-import MovieInfo from "./MovieInfo/MovieInfo";
+import Loader from "../../components/UI/Loader/Loader";
+import Card from "../../components/Card/Card";
+import Button from "../../components/UI/Button/Button";
+import MovieInfo from "../../components/MovieInfo/MovieInfo";
+import { scroller } from "react-scroll";
+
+function scroll() {
+  scroller.scrollTo("movie", {
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    offset: -70
+  });
+}
 
 function MainMovie(props) {
   const [showAllCast, setShowAllCast] = useState(false);
   const [showAllCrew, setShowAllCrew] = useState(false);
-  const {id} = props.match.params;
+  const { id } = props.match.params;
 
   useEffect(() => {
-    props.fetchMovie(props.match.params.id);
+    scroll();
+  }, []);
+
+  useEffect(() => {
+    props.fetchMovie(id);
     setShowAllCast(false);
     setShowAllCrew(false);
+    scroll();
   }, [id]);
-  console.log(props);
 
   return (
-    <div className={cls.MainMovie}>
+    <div className={cls.MainMovie} name="movie">
       {props.loading ? (
         <Loader />
       ) : (

@@ -8,7 +8,9 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors());
-app.use("/api", require("./routes/list.routes"));
+app.use(bodyParser.json());
+app.use("/api/movies", require("./routes/list.routes"));
+app.use("/api/auth", require("./routes/auth.routes"));
 
 const port = config.get("port") || 5000;
 const apiKey = config.get("apiKey");
@@ -58,5 +60,3 @@ async function getData() {
 }
 // getData();
 // lists.forEach(elem => updateBd(apiUrl, elem, apiKey, 1, ListModel, []));
-
-
